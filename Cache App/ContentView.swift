@@ -55,7 +55,7 @@ struct ContentView: View {
                         }
                     }
                     .padding()
-                    .background(Color.red)
+                    .background(Color.white) 
                     .cornerRadius(12)
                 }
                 .padding(.horizontal)
@@ -74,31 +74,20 @@ struct ContentView: View {
                 }
                 .padding(.horizontal)
                 
-                
                 VStack {
                     Text("More ways to add money")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.headline)
                         .padding()
-                    
-                    HStack{
-                        Image(systemName: "apple.logo")
-                            .padding(.horizontal)
-                        
-                        VStack{
-                            Text("Paper money")
-                                .font(.headline)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("Deposit at a nearby location")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right")
-                            .padding(.horizontal)
-                    }
+                    DownStack(image: .constant("banknote"))
+                        .padding()
+                    DownStack(image: .constant("repeat.circle"))
+                        .padding()
+                    DownStack(image: .constant("arrow.down.app"))
+                        .padding()
                 }
+                .background(Color.white)
+                
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -112,6 +101,7 @@ struct ContentView: View {
                     Image(systemName: "person.crop.circle")
                 }
             }
+            .background(Color.secondary.opacity(0.2))
         }
     }
 }
