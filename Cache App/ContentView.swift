@@ -7,15 +7,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var items: [Int] = []
-    private var titles = ["Savings", "Bitcoin", "Stocks", "Taxes"]
-    private var images = ["dollarsign.arrow.trianglehead.counterclockwise.rotate.90", "bitcoinsign.circle", "chart.line.uptrend.xyaxis", "bitcoinsign.bank.building"]
-    private var colors = [Color.green, Color.blue, Color.purple, Color.indigo]
-    private var info = ["", ""]
-    private var bottomLabel = ["Save for a goal", "↑ 1.00 today", "Invests with $1", "File for free" ]
+    @State private var bottomImages = ["banknote", "repeat.circle", "arrow.down.app" ]
+    @State private var bottomHeadlines = ["Paper Money", "Recurring Deposits", "Direct Deposit"]
+    @State private var bottomSubHeadlines = ["Deposit at a nearby location", "Add from your debit card", "Get paid up to 2 days faster"]
+        
    // private let adaptiveColumn = [
       //  GridItem(.adaptive(minimum: 150)) ]
-    private let columnLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    //private let columnLayout = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
         NavigationView{
             ScrollView{
@@ -81,12 +79,12 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.headline)
                         .padding()
-                    DownStack(image: .constant("banknote"))
-                        .padding()
-                    DownStack(image: .constant("repeat.circle"))
-                        .padding()
-                    DownStack(image: .constant("arrow.down.app"))
-                        .padding()
+                    ForEach((0...2), id: \.self) { index in
+                        BottomStack(image: $bottomImages[index],
+                                    headline: $bottomHeadlines[index],
+                                    subHeadline: $bottomSubHeadlines[index])
+                    }
+                    
                 }
                 .background(Color.white)
                 

@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct DownStack: View {
+struct BottomStack: View {
     @Binding var image: String
+    @Binding var headline: String
+    @Binding var subHeadline: String
     var body: some View {
         
         HStack{
@@ -22,10 +24,10 @@ struct DownStack: View {
                 .cornerRadius(16)
             
             VStack{
-                Text("Paper money")
+                Text(headline)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Deposit at a nearby location")
+                Text(subHeadline)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
@@ -34,10 +36,11 @@ struct DownStack: View {
             Image(systemName: "chevron.right")
                 .padding(.horizontal)
         }
+        .padding()
         
     }
 }
 
 #Preview {
-    DownStack(image: .constant("banknote"))
+    BottomStack(image: .constant("banknote"), headline: .constant(""), subHeadline: .constant(""))
 }
