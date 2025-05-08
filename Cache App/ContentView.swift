@@ -8,13 +8,19 @@ import SwiftUI
 
 struct ContentView: View {
     private var items: [Int] = []
-    private var data  = Array(1...4)
-    private let adaptiveColumn = [
-        GridItem(.adaptive(minimum: 150)) ]
+    private var titles = ["Savings", "Bitcoin", "Stocks", "Taxes"]
+    private var images = ["dollarsign.arrow.trianglehead.counterclockwise.rotate.90", "bitcoinsign.circle", "chart.line.uptrend.xyaxis", "bitcoinsign.bank.building"]
+    private var colors = [Color.green, Color.blue, Color.purple, Color.indigo]
+    private var info = ["", ""]
+    private var bottomLabel = ["Save for a goal", "↑ 1.00 today", "Invests with $1", "File for free" ]
+   // private let adaptiveColumn = [
+      //  GridItem(.adaptive(minimum: 150)) ]
+    private let columnLayout = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
         NavigationView{
             ScrollView{
-                
+                Spacer()
+                    .frame(height: 24)
                 
                 HStack {
                     VStack{
@@ -60,19 +66,15 @@ struct ContentView: View {
                 }
                 .padding(.horizontal)
                 
+                Spacer()
+                    .frame(height: 16)
                 
                 
-                LazyVGrid(columns: adaptiveColumn, spacing: 10) {
-                    ForEach(data, id: \.self) { item in
-                        Text(String(item))
-                            .frame(width: 180, height: 180, alignment: .center)
-                            .background(.blue)
-                            .cornerRadius(10)
-                            .foregroundColor(.white)
-                            .font(.title)
-                    }
-                }
+                GridStack()
                 .padding(.horizontal)
+                
+                Spacer()
+                    .frame(height: 16)
                 
                 VStack {
                     Text("More ways to add money")
