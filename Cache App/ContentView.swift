@@ -15,7 +15,7 @@ struct ContentView: View {
       //  GridItem(.adaptive(minimum: 150)) ]
     //private let columnLayout = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ScrollView{
                 Spacer()
                     .frame(height: 24)
@@ -87,6 +87,7 @@ struct ContentView: View {
                     
                 }
                 .background(Color.white)
+                .frame(maxHeight: .infinity)
                 
             }
             .toolbar {

@@ -9,7 +9,10 @@ import SwiftUI
 
 
 struct GridStack: View {
-    private let columnLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    private let columnLayout = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
 
     let titles = ["Savings", "Bitcoin", "Stocks", "Taxes"]
     let images = ["dollarsign.arrow.trianglehead.counterclockwise.rotate.90", "bitcoinsign.circle", "chart.line.uptrend.xyaxis", "bitcoinsign.bank.building"]
@@ -18,7 +21,7 @@ struct GridStack: View {
     let bottomLabel = ["Save for a goal", "↑ 1.00 today", "Invests with $1", "File for free" ]
     
     var body: some View {
-        LazyVGrid(columns: columnLayout, spacing: 10) {
+        LazyVGrid(columns: columnLayout, spacing: 16) {
             ForEach(0...3, id: \.self) { index in
                 VStack {
                     HStack {
@@ -53,7 +56,7 @@ struct GridStack: View {
                         .font(.subheadline)
                     
                 }
-                .frame(width: 180, height: 180, alignment: .center)
+                .frame(minWidth: 170, minHeight: 170, alignment: .center)
                 .background(Color.white)
                 .cornerRadius(12)
                 
